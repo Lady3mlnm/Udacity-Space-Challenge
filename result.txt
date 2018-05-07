@@ -1,0 +1,177 @@
+// Loading rockets
+
+Rocket #1:
+   steel - 8000
+                     unused loading - 0
+
+Rocket #2:
+   building tools I - 6000
+   building tools A - 2000
+                     unused loading - 0
+
+Rocket #3:
+   building tools D - 5000
+   building tools B - 2000
+   building tools G - 1000
+                     unused loading - 0
+
+Rocket #4:
+   building tools E - 5000
+   building tools C - 2000
+   plants - 1000
+                     unused loading - 0
+
+Rocket #5:
+   building tools H - 5000
+   building tools F - 2000
+   books - 1000
+                     unused loading - 0
+
+Rocket #6:
+   shelter equipment - 5000
+                     unused loading - 3000
+
+Rocket #7:
+   construction equipment - 5000
+                     unused loading - 3000
+
+
+
+Rocket #1:
+   steel - 8000
+   building tools A - 2000
+   building tools G - 1000
+                     unused loading - 0
+
+Rocket #2:
+   building tools I - 6000
+   building tools D - 5000
+                     unused loading - 0
+
+Rocket #3:
+   building tools H - 5000
+   building tools E - 5000
+   plants - 1000
+                     unused loading - 0
+
+Rocket #4:
+   construction equipment - 5000
+   shelter equipment - 5000
+   books - 1000
+                     unused loading - 0
+
+Rocket #5:
+   water - 5000
+   building tools F - 2000
+   building tools C - 2000
+   building tools B - 2000
+                     unused loading - 0
+
+
+
+Rocket #1:
+   colony A - 5000
+   habitat A - 3000
+                     unused loading - 0
+
+Rocket #2:
+   food A - 5000
+   habitat B - 3000
+                     unused loading - 0
+
+Rocket #3:
+   colony B - 5000
+   food B - 3000
+                     unused loading - 0
+
+Rocket #4:
+   colony C - 5000
+   food C - 3000
+                     unused loading - 0
+
+
+
+Rocket #1:
+   food A - 5000
+   habitat B - 3000
+   habitat A - 3000
+                     unused loading - 0
+
+Rocket #2:
+   colony B - 5000
+   food C - 3000
+   food B - 3000
+                     unused loading - 0
+
+Rocket #3:
+   colony C - 5000
+   colony A - 5000
+                     unused loading - 1000
+
+
+
+
+=== Simulation starts === (U1, phase 1)
+Rocket #1 succeeded
+Rocket #2 succeeded
+Rocket #3 succeeded
+Rocket #4 succeeded
+Rocket #5 succeeded
+Rocket #6 succeeded
+Rocket #7 succeeded
+
+
+=== Simulation starts === (U2, phase 1)
+Rocket #1 succeeded
+! Rocket #2 crashed during a landing.
+Rocket #2 succeeded
+! Rocket #3 crashed during a landing.
+Rocket #3 succeeded
+Rocket #4 succeeded
+Rocket #5 succeeded
+
+
+=== Simulation starts === (U1, phase 2)
+Rocket #1 succeeded
+Rocket #2 succeeded
+Rocket #3 succeeded
+! Rocket #4 exploded at start.
+Rocket #4 succeeded
+
+
+=== Simulation starts === (U2, phase 2)
+Rocket #1 succeeded
+Rocket #2 succeeded
+Rocket #3 succeeded
+
+
+
+// Average result for 10000000 tests
+// simple optimization
+   === Phase 1 ===
+Total budget for U1 phase 1 is 742.077 millions dollars.
+Total budget for U2 phase 1 is 679.316 millions dollars.
+
+   === Phase 2 ===
+Total budget for U1 phase 1 is 425.295 millions dollars.
+Total budget for U2 phase 1 is 405.228 millions dollars.
+
+   === Total ===
+Total budget for U1 is 1167.372 millions dollars.
+Total budget for U2 is 1084.545 millions dollars.
+
+
+
+// Average result for 10000000 tests
+// advanced optimization (worse result here)
+   === Phase 1 ===
+Total budget for U1 phase 1 is 742.095 millions dollars.
+Total budget for U2 phase 1 is 679.41 millions dollars.
+
+   === Phase 2 ===
+Total budget for U1 phase 1 is 425.32 millions dollars.
+Total budget for U2 phase 1 is 406.986 millions dollars.
+
+   === Total ===
+Total budget for U1 is 1167.416 millions dollars.
+Total budget for U2 is 1086.395 millions dollars.

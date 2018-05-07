@@ -1,0 +1,1 @@
+The 2nd training project for Udacity course "Object Oriented Programming in Java" (https://www.udacity.com/course/object-oriented-programming-in-java--ud283). Contains enough advanced algorithm of rocket loading optimization.

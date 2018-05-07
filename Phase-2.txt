@@ -1,0 +1,8 @@
+habitat A=3000
+colony A=5000
+food A=5000
+habitat B=3000
+colony B=5000
+food B=3000
+colony C=5000
+food C=3000
