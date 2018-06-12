@@ -1,4 +1,30 @@
-// Loading rockets
+   === Items for phase-1 ===
+Number of items: 15
+Weight of items: 55000
+
+   === Items for phase-2 ===
+Number of items: 8
+Weight of items: 32000
+
+   === Phase 1, U1 fleet cargo ===
+Number of items: 15
+Weight of items: 55000
+
+   === Phase 1, U2 fleet cargo ===
+Number of items: 15
+Weight of items: 55000
+
+   === Phase 2, U1 fleet cargo ===
+Number of items: 8
+Weight of items: 32000
+
+   === Phase 2, U2 fleet cargo ===
+Number of items: 8
+Weight of items: 32000
+
+
+=== Loading rockets ===
+
 
 Rocket #1:
    steel - 8000
@@ -35,6 +61,9 @@ Rocket #7:
    construction equipment - 5000
                      unused loading - 3000
 
+Rocket #8:
+   water - 5000
+                     unused loading - 3000
 
 
 Rocket #1:
@@ -68,7 +97,6 @@ Rocket #5:
                      unused loading - 0
 
 
-
 Rocket #1:
    colony A - 5000
    habitat A - 3000
@@ -90,7 +118,6 @@ Rocket #4:
                      unused loading - 0
 
 
-
 Rocket #1:
    food A - 5000
    habitat B - 3000
@@ -109,69 +136,41 @@ Rocket #3:
                      unused loading - 1000
 
 
+Number of test simulations: 10000000
+
+   === phase1, U1 ===
+Average budget: $ 843.3 million
+Average number of launches: 8.43
+Number of launches ideally: 8
+Percent of successful launches: 94.9%
+
+   === phase1, U2 ===
+Average budget: $ 679.3 million
+Average number of launches: 5.66
+Number of launches ideally: 5
+Percent of successful launches: 88.34%
+
+   === phase2, U1 ===
+Average budget: $ 425.3 million
+Average number of launches: 4.25
+Number of launches ideally: 4
+Percent of successful launches: 94.12%
+
+   === phase2, U2 ===
+Average budget: $ 406.0 million
+Average number of launches: 3.38
+Number of launches ideally: 3
+Percent of successful launches: 88.76%
 
 
-=== Simulation starts === (U1, phase 1)
-Rocket #1 succeeded
-Rocket #2 succeeded
-Rocket #3 succeeded
-Rocket #4 succeeded
-Rocket #5 succeeded
-Rocket #6 succeeded
-Rocket #7 succeeded
+   === total, U1 ===
+Average budget: $ 1268.6 million
+Average number of launches: 12.69
+Number of launches ideally: 12
+Percent of successful launches: 94.56%
 
-
-=== Simulation starts === (U2, phase 1)
-Rocket #1 succeeded
-! Rocket #2 crashed during a landing.
-Rocket #2 succeeded
-! Rocket #3 crashed during a landing.
-Rocket #3 succeeded
-Rocket #4 succeeded
-Rocket #5 succeeded
-
-
-=== Simulation starts === (U1, phase 2)
-Rocket #1 succeeded
-Rocket #2 succeeded
-Rocket #3 succeeded
-! Rocket #4 exploded at start.
-Rocket #4 succeeded
-
-
-=== Simulation starts === (U2, phase 2)
-Rocket #1 succeeded
-Rocket #2 succeeded
-Rocket #3 succeeded
-
-
-
-// Average result for 10000000 tests
-// simple optimization
-   === Phase 1 ===
-Total budget for U1 phase 1 is 742.077 millions dollars.
-Total budget for U2 phase 1 is 679.316 millions dollars.
-
-   === Phase 2 ===
-Total budget for U1 phase 1 is 425.295 millions dollars.
-Total budget for U2 phase 1 is 405.228 millions dollars.
-
-   === Total ===
-Total budget for U1 is 1167.372 millions dollars.
-Total budget for U2 is 1084.545 millions dollars.
-
-
-
-// Average result for 10000000 tests
-// advanced optimization (worse result here)
-   === Phase 1 ===
-Total budget for U1 phase 1 is 742.095 millions dollars.
-Total budget for U2 phase 1 is 679.41 millions dollars.
-
-   === Phase 2 ===
-Total budget for U1 phase 1 is 425.32 millions dollars.
-Total budget for U2 phase 1 is 406.986 millions dollars.
-
-   === Total ===
-Total budget for U1 is 1167.416 millions dollars.
-Total budget for U2 is 1086.395 millions dollars.
+   === total, U2 ===
+Average budget: $ 1085.3 million
+Average number of launches: 9.04
+Number of launches ideally: 8
+Percent of successful launches: 88.5%

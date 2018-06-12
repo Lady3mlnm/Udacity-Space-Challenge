@@ -1,29 +1,26 @@
 import java.util.ArrayList; //?
 
-public class Rocket implements SpaceShip {
+abstract class Ux implements Ux_interface {
     public int weightRocket;   //in kg
     public int weightLoading;
     public int weightMax;
-    public double ChanceLaunchExplosion;
-    public double ChanceLandingCrash;
+    public double ChanceLaunchExplosion = 1;
+    public double ChanceLandingCrash = 1;
     public int cost;           //in millions dollars
     public ArrayList<Item> rocketItems = new ArrayList();
 
-    public boolean launch(){
-        return true;
-    }
+    
+    public abstract boolean launch();
 
-    public boolean land(){
-        return true;
-    }
+    
+    public abstract boolean land();
 
+    
     final public boolean canCarry(Item itm){
-        if (this.weightMax - this.weightRocket - this.weightLoading >= itm.weight)
-            return true;
-        else
-            return false;
+        return this.weightMax - this.weightRocket - this.weightLoading >= itm.weight;
     }
 
+    
     final public void carry(Item itm){
         int j;
         for(j=0; j<this.rocketItems.size(); j++)
@@ -33,11 +30,11 @@ public class Rocket implements SpaceShip {
         this.weightLoading += itm.weight;
     }
 
+    
     final public void unload(Item itm){
         boolean isDone = false;
         int j;
         for(j=0; j<this.rocketItems.size(); j++)
-            //if(this.rocketItems.get(j)==itm){
             if(this.rocketItems.get(j).name==itm.name && this.rocketItems.get(j).weight==itm.weight){
                 this.rocketItems.remove(j);
                 isDone = true;
@@ -50,11 +47,13 @@ public class Rocket implements SpaceShip {
             System.out.println("! Error in Rocket.unload. Item " + itm.name + "-" + itm.weight + "kg is not in the rocket.");
     }
 
+    
     final public int freeSpace(){
         return this.weightMax - this.weightRocket - this.weightLoading;
     }
 
-    final public  void reloading(ExchangeVariant exchange, ArrayList<Item> storage){
+    
+    final public void reloading(ExchangeVariant exchange, ArrayList<Item> storage){
         //unload items from rocket and add it to storage
         for(int i=0; i<exchange.removedItems.size(); i++){
             Item workItem = exchange.removedItems.get(i);

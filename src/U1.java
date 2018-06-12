@@ -1,4 +1,4 @@
-public class U1 extends Rocket {
+public class U1 extends Ux {
     U1(){
         weightRocket = 10000;
         weightLoading = 0;
@@ -8,11 +8,13 @@ public class U1 extends Rocket {
         cost = 100;               //in millions dollars
     }
 
+    
     public boolean launch(){
-        return Math.random() > ChanceLaunchExplosion * ((double)(weightRocket + weightLoading) / weightMax);
+    	return Math.random() > ChanceLaunchExplosion * ((double)(weightLoading) / (weightMax-weightRocket));
     }
 
+    
     public boolean land(){
-        return Math.random() > ChanceLandingCrash * ((double)(weightRocket + weightLoading) / weightMax);
+    	return Math.random() > ChanceLandingCrash * ((double)(weightLoading) / (weightMax-weightRocket));
     }
 }

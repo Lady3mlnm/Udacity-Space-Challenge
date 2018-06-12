@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 public class Simulation {
+	
     public ArrayList loadItems(String fileName){
         ArrayList<Item> storage = new ArrayList();
         try {
@@ -30,37 +31,9 @@ public class Simulation {
         return storage;
     }
 
-
-
-    public void ShowStorage(ArrayList<Item> storage){
-        System.out.println();
-        for(int i=0; i<storage.size(); i++){
-            System.out.println(storage.get(i).name + ": " + storage.get(i).weight);
-        }
-        System.out.println();
-    }
-
-
-
-    public void ShowFleetDetails(ArrayList<Rocket> rocketFleet){
-        System.out.println();
-
-        for(int i=0; i<rocketFleet.size(); i++){
-            Rocket rct = rocketFleet.get(i);
-            System.out.println("Rocket #" + (i+1) + ":");
-
-            for(int j=0; j<rct.rocketItems.size(); j++)
-                System.out.println("   " + rct.rocketItems.get(j).name + " - " + rct.rocketItems.get(j).weight);
-
-            System.out.println("                     unused loading - " + rct.freeSpace() + "\n");
-        }
-
-        System.out.println();
-    }
-
-
-
-    public void StorageSort(ArrayList<Item> storage){
+    
+    
+    public void storageSort(ArrayList<Item> storage){
         //sort from the end of the list
         for(int i=storage.size()-2; i>=0; i--){
             int j = i+1;
@@ -91,12 +64,25 @@ public class Simulation {
 
 
 
-    public ArrayList loadU1(ArrayList<Item> storage){
-        //ArrayList<Item> tmpList = items;
-        ArrayList<U1> rocketFleet = new ArrayList();
+    /*
+     * Create rocket fleet in place items in its rocket.
+     * The type of rocket is transfered via rocketClass.
+     * Not ideal solution but work, better than 2 separate method.
+     */
+    public ArrayList loadUx(ArrayList<Item> storage, Class rocketClass){
+        ArrayList<Ux> rocketFleet = new ArrayList();
 
         do {
-            U1 rct = new U1();
+        	Ux rct;
+        	if (rocketClass.equals(U1.class))
+        		rct = new U1();
+        	else if (rocketClass.equals(U2.class))
+        		rct = new U2();
+        	else {
+        		System.out.println("! ERROR: not correct type in method Simulation.loadUx");
+        		return null;
+        	}
+        	
             int itemCount = 0;
 
             do {
@@ -104,7 +90,7 @@ public class Simulation {
                     break;
                 if (itemCount>storage.size()-1){
                     if(rct.freeSpace()>0)
-                        OptimizeRocketLoading(rct, storage);
+                        optimizeRocketLoading(rct, storage);
 
                     rocketFleet.add(rct);
                     break;
@@ -112,7 +98,7 @@ public class Simulation {
                 if(rct.canCarry(storage.get(itemCount)) ) {
                     rct.carry(storage.get(itemCount));
                     storage.remove(itemCount);
-                    if (rct.freeSpace()<=0) {       //shortcut for reducing number of cycles
+                    if (rct.freeSpace()<=0 || storage.isEmpty()) {       //shortcut for reducing number of cycles
                         rocketFleet.add(rct);
                         break;
                     }
@@ -127,13 +113,9 @@ public class Simulation {
 
 
 
-    private void OptimizeRocketLoading(Rocket rct, ArrayList<Item> storage){
+    private void optimizeRocketLoading(Ux rct, ArrayList<Item> storage){
         ArrayList<ExchangeVariant> variantList = new ArrayList();
         ExchangeVariant exchange;
-
-//        exchange.freeSpace = rct.freeSpace();
-//        variantList.add(exchange);
-//        System.out.println("Done. rct.freeSpace(): " + exchange.freeSpace);
 
         int minValue = rct.freeSpace();
         int minIndex = -1;
@@ -167,53 +149,14 @@ public class Simulation {
 
 
 
-
-
-
-
-
-
-    public ArrayList loadU2(ArrayList<Item> storage){
-        //ArrayList<Item> tmpList = items;
-        ArrayList<U2> rocketFleet = new ArrayList();
-
-        do {
-            U2 rct = new U2();
-            int itemCount = 0;
-
-            do {
-                if(storage.isEmpty() )
-                    break;
-                if (itemCount>storage.size()-1){
-                    if(rct.freeSpace()>0)
-                        OptimizeRocketLoading(rct, storage);
-
-                    rocketFleet.add(rct);
-                    break;
-                }
-                if(rct.canCarry(storage.get(itemCount)) ) {
-                    rct.carry(storage.get(itemCount));
-                    storage.remove(itemCount);
-                    if (rct.freeSpace()<=0 || storage.isEmpty()) {       //shortcut for reducing number of cycles
-                        rocketFleet.add(rct);
-                        break;
-                    }
-                } else {
-                    itemCount++;
-                }
-            } while (true);
-        } while (!storage.isEmpty());
-
-        return rocketFleet;
-    }
-
-
-    public int runSimulation(ArrayList<Rocket> rocketFleet, boolean verbose){
+    public ResultExpedition runSimulation(ArrayList<Ux> rocketFleet, boolean verbose){
         if (verbose)
             System.out.println("\n\n=== Simulation starts ===");
         int budget = 0;
+        int numberLaunches = 0;
         for (int i=0; i<rocketFleet.size(); i++){
             String result;
+            numberLaunches++;
             budget += rocketFleet.get(i).cost;
 
             if (!rocketFleet.get(i).launch() ) {
@@ -230,6 +173,6 @@ public class Simulation {
                 System.out.println(result);
         }
 
-        return budget;
+        return new ResultExpedition(budget, numberLaunches);
     }
 }

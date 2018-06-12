@@ -1,3 +1,8 @@
+/*
+ * Info about variant of item exchange.
+ * Used only for optimization.
+ */
+
 import java.util.ArrayList;
 
 public class ExchangeVariant {
